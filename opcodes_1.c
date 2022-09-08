@@ -69,13 +69,17 @@ void m_pall(stack_t **stack, unsigned int line_number)
 
 void m_pint(stack_t **stack, unsigned int line_number)
 {
+	stack_t *pint_stack;
+	pint_stack = *stack;
+
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
 		exit (EXIT_FAILURE);
 	} else
 	{
-		printf("%d\n", (*stack)->n);
+		printf("%d\n",pint_stack->n );
 	}
 
 }
