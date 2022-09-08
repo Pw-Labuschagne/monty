@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * m_add - Adds the top two elements of a stack
