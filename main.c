@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	monty_f = fopen(argv[1], "r");
@@ -46,12 +46,11 @@ int main(int argc, char *argv[])
 	if (monty_f == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	while (fscanf(monty_f, "%s %u", buf, &num) != -1)
 	{
 		token = strtok(buf, " \t\n\r\v\f'$'");
-		
 		if (token != NULL && token[0] != '#')
 		{
 			opcode_type(&stack, line_number, token);
@@ -62,7 +61,7 @@ int main(int argc, char *argv[])
 	free_stack(stack);
 	stack = NULL;
 	fclose(monty_f);
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -101,6 +100,6 @@ void opcode_type(stack_t **stack, unsigned int line_number, char *token)
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
 	free_stack(*stack);
 
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 
 }

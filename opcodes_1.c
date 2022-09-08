@@ -2,7 +2,7 @@
 
 /**
  * m_push - The opcode push pushes an element to the stack
- * 	    Usage: push <int>
+ * Usage: push <int>
  * @stack: Head reference to the stack
  * @line_number: An integer that needs to be added to the stack
  * Return: Nothing
@@ -11,13 +11,12 @@
 void m_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
-	
 
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(new_node);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = line_number;
@@ -38,7 +37,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 
 /**
  * m_pall - Prints all the values on the stack, starting from top of stack
- * @head_ref: Head reference to the stack
+ * @stack: Head reference to the stack
  * @line_number: Still figuring this one out
  * Return: Nothing
  */
@@ -46,6 +45,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 void m_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pall_stack;
+
 	pall_stack = *stack;
 
 	(void)line_number;
@@ -70,16 +70,17 @@ void m_pall(stack_t **stack, unsigned int line_number)
 void m_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pint_stack;
+
 	pint_stack = *stack;
 
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free_stack(*stack);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	} else
 	{
-		printf("%d\n",pint_stack->n );
+		printf("%d\n", pint_stack->n);
 	}
 
 }
@@ -101,9 +102,9 @@ void m_pop(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack", line_number);
 		free_stack(*stack);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
-	
+
 	*stack = pop_stack;
 
 	if (*stack == NULL)
@@ -125,7 +126,8 @@ void m_swap(stack_t **stack, unsigned int line_number)
 {
 
 	stack_t *swap_stack = NULL;
-	int temp =0;
+
+	int temp = 0;
 
 	swap_stack = *stack;
 
@@ -134,7 +136,7 @@ void m_swap(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		free_stack(*stack);
 		free_stack(swap_stack);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	swap_stack = *stack;

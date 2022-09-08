@@ -17,7 +17,7 @@ void m_add(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short", line_number);
 		free_stack(*stack);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 
